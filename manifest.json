@@ -1,6 +1,6 @@
 {
-  // "manifest_version": 3,
-  "name": "Prime Time",
+  "manifest_version": 2,
+  "name": "Prime Tim",
   "description": "Manage your productivity with ease!",
   "version": "1.0",
   "action": {
