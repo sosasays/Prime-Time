@@ -4,8 +4,8 @@
   "description": "Manage your productivity with ease!",
   "version": "1.0",
   "action": {
-    "default_popup": "index.html",
-    "default_icon": "timer.png"
+    "default_popup": "popup/popup.html",
+    "default_icon": "images/icon-32.png"
   },
     "icons": {
     "16": "images/icon-16.png",
@@ -15,7 +15,8 @@
   },
   "content_scripts": [
     {
-      "js": ["main.js"]
+      "matches": ["http://*/*"],
+      "js": ["./scripts/main.js"]
     }
   ]
 }

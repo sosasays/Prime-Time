@@ -6,11 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="popup.css">
 </head>
 
 <body>
-    <h1>Hello Extensions</h1>
+    <div class="container">
+        <header class="header">
+            <img src="/images/icon-100.png" alt="" class="small-logo">
+        </header>
+        <main>
+            <hr>
+            <div class="time">45:01</div>
+            <hr>
+            <label class="toggle">
+                <span class="toggle-label">Off</span>
+                <input class="toggle-checkbox" type="checkbox">
+                <div class="toggle-switch"></div>
+                <span class="toggle-label">On</span>
+            </label>
+            <hr>
+            <label class="toggle">
+                <input class="toggle-checkbox" type="checkbox" checked>
+                <div class="toggle-switch"></div>
+                <span class="toggle-label">Reset</span>
+            </label>
+        </main>
+
+    </div>
+
     <script src="popup.js"></script>
 </body>
 
