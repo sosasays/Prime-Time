@@ -63,7 +63,7 @@ document.querySelector('.toggle-button').addEventListener('click', () => {
   console.log('event listener triggered')
   click = !click;
   console.log('Click changed to: ', click)
-  buttonText = document.querySelector('.toggle-button').innerText;
+  let buttonText = document.querySelector('.toggle-button').innerText;
 
   // if click is true:
   if (click === true) {
