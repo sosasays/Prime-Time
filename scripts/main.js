@@ -1,5 +1,16 @@
 // Function declarations
 
+const injectedTime = document.createElement('div');
+injectedTime.setAttribute('class', 'injectTime');
+injectedTime.innerText = '00:00:00';
+console.log(injectedTime)
+
+const body = document.querySelector('body');
+body.appendChild(injectedTime);
+
+
+
+
 // Convert a time value from miliseconds to Hours: Minutes
 function convertToHHMM(ms) {
   // input: time in ms
@@ -38,12 +49,10 @@ function updateTime() {
   // return;
   } else if (click === false) {
     console.log('Click is false, resetting timer')
-    // if click is false:
+    // if click is false
     // set display to 00:00:00
     const timeField = document.querySelector('.time');
     timeField.innerText = '00:00:00'
-    //return
-    // clearTimeout(timeoutTag);
     return;
 
   }
@@ -55,8 +64,9 @@ let startTime = Date.now();
 let click = false
 let timeoutID;
 // when the dom is loaded:
-// window.addEventListener('DOMContentLoaded', () => { // make trigger to begin the toggle not DOM loading, target class toggle and listen for click
-                                                      // have boolean to track on and off, when turned back off reset to 0 and stop
+// window.addEventListener('DOMContentLoaded', () => { 
+// make trigger to begin the toggle not DOM loading, target class toggle and listen for click
+// have boolean to track on and off, when turned back off reset to 0 and stop
 let buttonText = document.querySelector('.toggle-button').innerText;
 
   
@@ -66,7 +76,6 @@ document.querySelector('.toggle-button').addEventListener('click', () => {
   click = !click;
   console.log('Click changed to: ', click)
   let buttonText = document.querySelector('.toggle-button').innerText;
-  // document.querySelector('.toggle-button').innerText = (buttonText === 'Start') ? 'Stop' : 'Start';
   if (buttonText === 'Start') {
     document.querySelector('.toggle-button').innerText = 'Stop';
     document.querySelector('.toggle-button').style.backgroundColor = '#ea3838';
@@ -78,8 +87,6 @@ document.querySelector('.toggle-button').addEventListener('click', () => {
     document.querySelector('.toggle-button').style.backgroundColor = 'transparent';
     document.querySelector('.toggle-button').style.borderColor = '#3885ea';
     document.querySelector('.toggle-button').style.color = 'black';
-
-    // document.querySelector('.toggle-button:hover').style.borderColor = '#3885ea';
   }
 
   // if click is true:
@@ -99,7 +106,4 @@ document.querySelector('.toggle-button').addEventListener('click', () => {
 
   }
 })
-
-
-
 
