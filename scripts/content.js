@@ -5,6 +5,15 @@ injectedTime.innerText = '00:00:00';
 const body = document.querySelector('body');
 body.appendChild(injectedTime);
 
+injectedTime.addEventListener('click', function() {
+  chrome.storage.local.set({[window.location.hostname]: 0}, function() {
+    startTime = Date.now();
+    savedTime = 0;
+    timeDifferenceMS = 0;
+    console.log('time reset!');
+  });
+})
+
     // Global variables:
 let startTime = Date.now();
 
