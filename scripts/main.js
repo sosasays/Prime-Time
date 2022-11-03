@@ -58,14 +58,16 @@ let timeoutID;
 // window.addEventListener('DOMContentLoaded', () => { // make trigger to begin the toggle not DOM loading, target class toggle and listen for click
                                                       // have boolean to track on and off, when turned back off reset to 0 and stop
   
-document.querySelector('.reset-button').addEventListener('click', () => {
+document.querySelector('.toggle-button').addEventListener('click', () => {
   // update boolean to track change in toggle
   console.log('event listener triggered')
   click = !click;
   console.log('Click changed to: ', click)
+  buttonText = document.querySelector('.toggle-button').innerText;
 
   // if click is true:
   if (click === true) {
+    buttonText = 'Stop';
     console.log('Click is true, starting time')
     startTime = Date.now();
         
@@ -87,7 +89,8 @@ document.querySelector('.reset-button').addEventListener('click', () => {
   //   //return
   //   // clearTimeout(timeoutTag);
   //   return;
-
+  } else {
+    buttonText = 'Start';
   }
 })
 
