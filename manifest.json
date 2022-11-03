@@ -17,7 +17,7 @@
     {
       "css": ["styles.css"],
       "matches": ["http://*/*", "https://*/*"],
-      "js": ["scripts/main.js", "scripts/content.js"]
+      "js": ["scripts/content.js"]
     }
   ]
 }

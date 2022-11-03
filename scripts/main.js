@@ -51,10 +51,8 @@ function updateTime() {
 }
 
 // Global variables:
-let currentDomain;
 let startTime = Date.now();
-let click = false
-let timeoutID;
+let click = false;
 let buttonText = document.querySelector('.toggle-button').innerText;
 
 // when the dom is loaded:
@@ -92,32 +90,3 @@ document.querySelector('.toggle-button').addEventListener('click', () => {
     updateTime();
   }
 })
-
-
-// // SIMON'S CODE
-// let injectedTime = injectedTime;
-// document.addEventListener('DOMContentLoaded', () => {
-//     startTime = Date.now();
-
-// function updateTime() {
-//   const currentTime = Date.now()
-//   // Update text content of display div to current time - start time
-//   const timeDifferenceMS = currentTime - startTime;
-//   const timeDifferenceHHMM = convertToHHMM(timeDifferenceMS);
-
-//   // Set text content of display div's time to 00:00
-//   const timeField = injectedTime;
-//   console.log(injectedTime);
-//   const showHours = (timeDifferenceHHMM.hours < 10) ? '0' + timeDifferenceHHMM.hours.toString() : timeDifferenceHHMM.hours.toString();
-//   const showMinutes = (timeDifferenceHHMM.minutes < 10) ? '0' + timeDifferenceHHMM.minutes.toString() : timeDifferenceHHMM.minutes.toString();
-//   const showSeconds = (timeDifferenceHHMM.seconds < 10) ? '0' + timeDifferenceHHMM.seconds.toString() : timeDifferenceHHMM.seconds.toString();
-
-//   timeField.innerText = `${showHours}:${showMinutes}:${showSeconds}`;
-
-//   // Recursive-ish call to continue updating time display every minute
-//   setTimeout(updateTime, 1000);
-// }
-    
-//     // make first call of updateTime
-//     updateTime();
-// })
