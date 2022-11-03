@@ -28,13 +28,14 @@ function updateTime() {
   timeField.innerText = `${timeDifferenceHHMM.hours}:${timeDifferenceHHMM.minutes}:${timeDifferenceHHMM.seconds}`
 
   // Recursive-ish call to continue updating time display every minute
-  setTimeout(updateTime, 1000)
+  timeoutTag = setTimeout(updateTime, 1000);
 }
 
 // Global variables:
 let currentDomain;
 let startTime = Date.now();
 let click = false
+let timeoutID;
 // when the dom is loaded:
 // window.addEventListener('DOMContentLoaded', () => { // make trigger to begin the toggle not DOM loading, target class toggle and listen for click
                                                       // have boolean to track on and off, when turned back off reset to 0 and stop
@@ -56,12 +57,14 @@ document.querySelector('.toggle').addEventListener('click', () => {
 
     // make first call of updateTime
     updateTime();
+
   } else {
     // if click is false:
     // set display to 00:00:00
     const timeField = document.querySelector('.time');
     timeField.innerText = '00:00:00'
     //return
+    clearTimeout(timeoutTag);
     return;
 
   }
