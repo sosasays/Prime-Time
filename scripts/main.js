@@ -34,7 +34,7 @@ function updateTime() {
 // Global variables:
 let currentDomain;
 let startTime = Date.now();
-let clicked = false
+let click = false
 // when the dom is loaded:
 // window.addEventListener('DOMContentLoaded', () => { // make trigger to begin the toggle not DOM loading, target class toggle and listen for click
                                                       // have boolean to track on and off, when turned back off reset to 0 and stop
@@ -45,15 +45,14 @@ document.querySelector('.toggle').addEventListener('click', () => {
 
   // if click is true:
   if (click) {
-    // If currentDomain has changed, set start time
-    if (currentDomain !== window.location.hostname) {
-        startTime = Date.now();
+
+    startTime = Date.now();
         
-        currentDomain = window.location.hostname;
-    }
+        // currentDomain = window.location.hostname;
+
     
     // Get URL on current page, display domain name
-    currentPage = window.location.href;
+    // currentPage = window.location.href;
 
     // make first call of updateTime
     updateTime();
