@@ -24,8 +24,14 @@ function convertToHHMM(ms) {
 
 function updateTime() {
   const currentTime = Date.now();
+
   // Update text content of display div to current time - start time
-  const timeDifferenceMS = currentTime - startTime;
+  const timeDifferenceMS = (currentTime - startTime) + savedTime;
+
+  chrome.storage.local.set({[window.location.hostname]: timeDifferenceMS}, function() {
+    console.log('Stored time: ', timeDifferenceMS);
+  });
+
   const timeDifferenceHHMM = convertToHHMM(timeDifferenceMS);
 
   // Set text content of display div's time to 00:00
@@ -43,4 +49,18 @@ function updateTime() {
 
 // Run the functions on document load
 startTime = Date.now();
+let savedTime = 0;
+chrome.storage.local.get([window.location.hostname], function(result) {
+  console.log('data:', result)
+  console.log('data with domain property', result[window.location.hostname])
+  if (result[window.location.hostname] !== undefined) {
+
+    savedTime = Number(result[window.location.hostname]);
+    console.log('Retrieved time:', result[window.location.hostname]);
+  }
+  else {
+    savedTime = 0;
+    console.log('No time retrieved');
+  }
+})
 updateTime();
