@@ -7,9 +7,11 @@ function convertToHHMM(ms) {
   
   const hours = Math.floor(ms / (3600000));
   const minutes = Math.floor((ms % 3600000) / 60000);
+  const seconds = Math.floor(ms % 60000 / 1000);
   
   return {hours: hours,
-          minutes: minutes};
+          minutes: minutes,
+          seconds: seconds};
 }
 
 // 
@@ -20,22 +22,35 @@ function updateTime() {
   const timeDifferenceHHMM = convertToHHMM(timeDifferenceMS);
 
   // Set text content of display div's time to 00:00
-  // DIVHERE.innerText = `${startTimeHHMM[hours]}:${startTimeHHMM[minutes]}
+  const timeField = document.querySelector('.time');
+  timeField.innerText = `${timeDifferenceHHMM[hours]}:${timeDifferenceHHMM[minutes]}:${timeDifferenceHHMM[seconds]}`
 
   // Recursive-ish call to continue updating time display every minute
-  setTimeout(updateTime, 60000)
+  setTimeout(updateTime, 1000)
 }
 
-// Logic for getting and rendering time
+// Global variables:
+let currentDomain;
 
+// when the dom is loaded:
+window.addEventListener('DOMContentLoaded', () => {
+  
+  // If currentDomain has changed, set start time
+  if (currentDomain !== window.location.hostname) {
+      const startTimeMS = Date.now();
+      const startTimeHHMM = convertToHHMM(startTimeMS);
+
+      currentDomain = window.location.hostname;
+  }
+  
   // Get URL on current page, display domain name
-
-  // Set start time
-  const startTimeMS = Date.now();
-  const startTimeHHMM = convertToHHMM(startTimeMS);
+  currentPage = window.location.href;
 
   // make first call of updateTime
   updateTime();
+})
+
+
 
 
 
