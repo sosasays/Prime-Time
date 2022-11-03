@@ -28,7 +28,20 @@ function updateTime() {
   timeField.innerText = `${timeDifferenceHHMM.hours}:${timeDifferenceHHMM.minutes}:${timeDifferenceHHMM.seconds}`
 
   // Recursive-ish call to continue updating time display every minute
-  timeoutTag = setTimeout(updateTime, 1000);
+  if (click) {
+    setTimeout(updateTime, 1000);
+  // return;
+  } else if (click === false) {
+    console.log('Click is false, resetting timer')
+    // if click is false:
+    // set display to 00:00:00
+    const timeField = document.querySelector('.time');
+    timeField.innerText = '00:00:00'
+    //return
+    // clearTimeout(timeoutTag);
+    return;
+
+  }
 }
 
 // Global variables:
@@ -40,13 +53,15 @@ let timeoutID;
 // window.addEventListener('DOMContentLoaded', () => { // make trigger to begin the toggle not DOM loading, target class toggle and listen for click
                                                       // have boolean to track on and off, when turned back off reset to 0 and stop
   
-document.querySelector('.toggle').addEventListener('click', () => {
+document.querySelector('.reset-button').addEventListener('click', () => {
   // update boolean to track change in toggle
+  console.log('event listener triggered')
   click = !click;
+  console.log('Click changed to: ', click)
 
   // if click is true:
-  if (click) {
-
+  if (click === true) {
+    console.log('Click is true, starting time')
     startTime = Date.now();
         
         // currentDomain = window.location.hostname;
@@ -58,23 +73,18 @@ document.querySelector('.toggle').addEventListener('click', () => {
     // make first call of updateTime
     updateTime();
 
-  } else {
-    // if click is false:
-    // set display to 00:00:00
-    const timeField = document.querySelector('.time');
-    timeField.innerText = '00:00:00'
-    //return
-    clearTimeout(timeoutTag);
-    return;
+  // } else if (click === false) {
+  //   console.log('Click is false, resetting timer')
+  //   // if click is false:
+  //   // set display to 00:00:00
+  //   const timeField = document.querySelector('.time');
+  //   timeField.innerText = '00:00:00'
+  //   //return
+  //   // clearTimeout(timeoutTag);
+  //   return;
 
   }
 })
 
 
 
-
-
-
-
-
-  // consider: matches content script, match patterns
