@@ -25,11 +25,16 @@ function updateTime() {
 
   // Set text content of display div's time to 00:00
   const timeField = document.querySelector('.time');
-  timeField.innerText = `${timeDifferenceHHMM.hours}:${timeDifferenceHHMM.minutes}:${timeDifferenceHHMM.seconds}`
+  const showHours = (timeDifferenceHHMM.hours < 10) ? '0' + timeDifferenceHHMM.hours.toString() : timeDifferenceHHMM.hours.toString();
+  const showMinutes = (timeDifferenceHHMM.minutes < 10) ? '0' + timeDifferenceHHMM.minutes.toString() : timeDifferenceHHMM.minutes.toString();
+  const showSeconds = (timeDifferenceHHMM.seconds < 10) ? '0' + timeDifferenceHHMM.seconds.toString() : timeDifferenceHHMM.seconds.toString();
+
+  timeField.innerText = `${showHours}:${showMinutes}:${showSeconds}`;
 
   // Recursive-ish call to continue updating time display every minute
   if (click) {
     setTimeout(updateTime, 1000);
+
   // return;
   } else if (click === false) {
     console.log('Click is false, resetting timer')
